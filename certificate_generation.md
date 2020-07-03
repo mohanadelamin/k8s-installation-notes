@@ -149,6 +149,6 @@ sudo cp intermediate1.key /etc/kubernetes/pki/ca.key
 ```
 
 Ref:
-https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL%20and_revocation.html#toc_1
-https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/
-https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/
+- https://raymii.org/s/tutorials/OpenSSL_command_line_Root_and_Intermediate_CA_including_OCSP_CRL%20and_revocation.html#toc_1
+- https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/
+- https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/
