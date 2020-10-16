@@ -1,6 +1,11 @@
 # Installing K8S 1.17 on CentOS 7
 ---------------------------------
 
+Prerequisites:
+==============
+
+Install 3 CentOS 7 VMs. for example [CentOS-7-x86_64-Minimal-2003.iso](http://mirror.schoemaker.systems/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso). 1 VM will be used as Master and 2 as Worker Nodes.
+
 Master:
 =======
 1-
@@ -64,15 +69,20 @@ sudo systemctl enable kubelet && sudo systemctl start kubelet
 ```
 
 11-
-OPTIONAL: To use custom certificate. add the CA or intermidery CA to the master node at /etc/kubernetes/pki. to create CA and Intermediate CA on linux machine check the steps here: [Certificate Geneartion](<https://github.com/mohanadelamin/k8s-installation-notes/blob/master/certificate_generation.md>)
+OPTIONAL and not needed unless custom certificate is required: To use custom certificate. add the CA or intermidery CA to the master node at /etc/kubernetes/pki. to create CA and Intermediate CA on linux machine check the steps here: [Certificate Geneartion](<https://github.com/mohanadelamin/k8s-installation-notes/blob/master/certificate_generation.md>)
 ```
 sudo mkdir /etc/kubernetes/pki
 cp ca.crt ca.key /etc/kubernetes/pki
 ```
 
+If you create custom certificate then add the following line to command in next step (Replace the domain and api server IP)
+```
+--apiserver-cert-extra-sans k8s-master.emea-ce.local,10.193.86.8 --apiserver-advertise-address 10.193.86.8 
+```
+
 12-
 ```
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address 10.193.86.8 --ignore-preflight-errors=all --apiserver-cert-extra-sans k8s-master.emea-ce.local,10.193.86.8
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=all
 ```
 
 13-
